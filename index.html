@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f4f2e8" />
+    <title>사과 열매 | 숫자 게임</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Jua&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="./" aria-label="사과 열매 홈">
+          <span class="brand-icon" aria-hidden="true">●</span>
+          <span>초록 과수원</span>
+        </a>
+        <span class="edition-label">숫자 게임 <span>·</span> 01</span>
+      </header>
+
+      <section class="game-layout" aria-labelledby="page-title">
+        <div class="game-info">
+          <p class="kicker"><span class="kicker-line"></span> 오늘의 수확</p>
+          <h1 id="page-title">숫자를 잇고<br /><span>사과를 따요</span></h1>
+          <p class="intro-copy">이웃한 숫자를 이어 합을 만드세요.<br />10의 배수가 되면 사과가 사라집니다.</p>
+
+          <div class="score-row" aria-label="점수 현황">
+            <div class="score-block">
+              <span class="label">내 점수</span>
+              <strong id="current-score">0000</strong>
+            </div>
+            <span class="score-separator" aria-hidden="true"></span>
+            <div class="score-block best-block">
+              <span class="label">최고 점수</span>
+              <strong id="best-score">0000</strong>
+            </div>
+          </div>
+
+          <div class="timer-row" aria-live="polite">
+            <span class="clock-icon" aria-hidden="true">◷</span>
+            <div class="timer-text">
+              <span class="label">남은 시간</span>
+              <strong id="timer">01:00</strong>
+            </div>
+            <div class="timer-track" aria-hidden="true"><span id="timer-fill"></span></div>
+          </div>
+
+          <div class="controls-row">
+            <button id="start-button" class="start-button" type="button">
+              <span id="start-label">게임 시작</span>
+              <span class="button-arrow" aria-hidden="true">↗</span>
+            </button>
+            <p id="status-message" class="status-message" aria-live="polite">60초 동안 가장 높은 점수에 도전하세요.</p>
+          </div>
+
+          <p class="instruction"><span>01</span> 누른 채 이웃한 숫자를 드래그하세요</p>
+        </div>
+
+        <div class="board-frame">
+          <div class="board-topline">
+            <span>ORCHARD / 08 × 08</span>
+            <span id="selection-sum">합계 <b>0</b></span>
+          </div>
+          <div id="game-board" class="game-board is-locked" role="grid" aria-label="8 곱하기 8 사과 숫자 게임판"></div>
+          <div class="board-bottomline">
+            <span>숫자 1 — 9</span>
+            <span><i aria-hidden="true"></i> 합이 10의 배수일 때 획득</span>
+          </div>
+        </div>
+      </section>
+
+      <footer class="page-footer">
+        <span>숫자를 잇고, 사과를 모으고.</span>
+        <span>BEST <b id="footer-best-score">0000</b></span>
+      </footer>
+    </main>
+
+    <div id="result-overlay" class="result-overlay" hidden>
+      <section class="result-dialog" role="dialog" aria-modal="true" aria-labelledby="result-title">
+        <p class="kicker"><span class="kicker-line"></span> 수확 완료</p>
+        <h2 id="result-title">참 잘했어요!</h2>
+        <p class="result-copy">이번 판에서 얻은 점수</p>
+        <strong id="final-score" class="final-score">0000</strong>
+        <button id="restart-button" class="start-button" type="button">
+          <span>다시 하기</span><span class="button-arrow" aria-hidden="true">↗</span>
+        </button>
+      </section>
+    </div>
+    <canvas id="confetti-canvas" class="confetti-canvas" aria-hidden="true"></canvas>
+  </body>
+</html>
